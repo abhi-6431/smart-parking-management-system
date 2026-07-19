@@ -1,0 +1,2 @@
+const express=require('express');const {body}=require('express-validator');const c=require('../controllers/user.controller');const {authenticate}=require('../middleware/auth.middleware');const r=express.Router();
+r.use(authenticate);r.put('/profile',[body('name').trim().isLength({min:2,max:100}),body('phone').optional({values:'falsy'}).trim().isLength({max:20})],c.profile);r.put('/password',[body('currentPassword').notEmpty(),body('newPassword').isLength({min:8,max:72})],c.password);module.exports=r;

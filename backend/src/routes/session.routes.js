@@ -1,0 +1,1 @@
+const express = require('express'); const { body } = require('express-validator'); const c = require('../controllers/session.controller'); const { authenticate, authorize } = require('../middleware/auth.middleware'); const r = express.Router(); r.use(authenticate); r.post('/entry', [body('bookingId').isInt({ min: 1 })], c.entry); r.patch('/:id/exit', c.exit); module.exports = r;

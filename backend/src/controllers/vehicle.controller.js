@@ -1,0 +1,7 @@
+const P=require('../models/parking.model'); const {validationResult}=require('express-validator');
+const invalid=(q,s)=>{const e=validationResult(q);if(!e.isEmpty()){s.status(422).json({message:'Validation failed',errors:e.array().map(x=>({field:x.path,message:x.msg}))});return true}return false};
+async function list(req,res,next){try{res.json({vehicles:await P.listVehicles(req.user.role==='ADMIN'&&req.query.all==='true'?null:req.user.id)})}catch(e){next(e)}}
+async function create(req,res,next){try{if(invalid(req,res))return;const vehicle=await P.createVehicle({...req.body,user_id:req.user.id,owner_name:req.body.owner_name||req.user.email});res.status(201).json({message:'Vehicle added',vehicle})}catch(e){next(e)}}
+async function update(req,res,next){try{if(invalid(req,res))return;const v=await P.vehicleById(req.params.id);if(!v)return res.status(404).json({message:'Vehicle not found.'});if(req.user.role!=='ADMIN'&&v.user_id!==req.user.id)return res.status(403).json({message:'Not permitted.'});res.json({message:'Vehicle updated',vehicle:await P.updateVehicle(v.id,req.body)})}catch(e){next(e)}}
+async function remove(req,res,next){try{const v=await P.vehicleById(req.params.id);if(!v)return res.status(404).json({message:'Vehicle not found.'});if(req.user.role!=='ADMIN'&&v.user_id!==req.user.id)return res.status(403).json({message:'Not permitted.'});await P.deleteVehicle(v.id);res.status(204).end()}catch(e){next(e)}}
+module.exports={list,create,update,remove};
