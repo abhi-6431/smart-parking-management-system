@@ -1,24 +1,56 @@
-# Smart Parking Management System
+# 🚗 Smart Parking Management System
 
-A full-stack college DSA project built with React, Node.js, Express, MySQL, JWT, and MVC architecture.
+A full-stack Smart Parking Management System developed as a Data Structures & Algorithms (DSA) project for B.Tech Computer Science & Engineering at Lovely Professional University.
 
-## Included features
+## 🌐 Live Demo
 
-The application includes JWT authentication, role-based user/admin dashboards, vehicle and slot management, automatic slot allocation, booking cancellation, parking entry/exit, fee calculation, cash/UPI/card dummy payments, receipts, and occupancy/revenue reporting.
+https://smart-parking-management-system-1-xoew.onrender.com 
 
-## Quick start
+## 📌 Features
 
-1. For a new database, run `database/schema.sql`. For a database created with the original Phase 1 schema, run `database/migrate_phase2.sql` once instead.
-2. Copy `backend/.env.example` to `backend/.env`, then fill in your local MySQL and JWT values.
-3. Install dependencies in each app:
-   - `cd backend && npm install`
-   - `cd frontend && npm install`
-4. Start both applications:
-   - Backend: `npm run dev` (from `backend`)
-   - Frontend: `npm run dev` (from `frontend`)
+- User Registration & Login
+- Secure JWT Authentication
+- Vehicle Management
+- Parking Slot Booking
+- Booking History
+- Responsive Dashboard
+- Admin Panel
 
-The backend API runs on `http://localhost:5000/api`; Vite serves the frontend on `http://localhost:5173` by default.
+## 🛠️ Technologies Used
 
-## Development administrator
+### Frontend
+- React.js
+- Vite
+- HTML5
+- CSS3
+- JavaScript
 
-The database seed creates `admin@parksmart.local` with password `Admin@123`. Change this password immediately after first sign-in outside local development.
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MySQL
+
+### Authentication
+- JWT
+- bcrypt
+
+### Version Control
+- Git
+- GitHub
+
+### Deployment
+- Render
+
+## 📚 Data Structures & Algorithms Used
+
+- Arrays
+- Linear Search
+- Filtering
+- Sorting
+- CRUD Operations
+
+## 📄 Project Report
+
+The complete project report is available in this repository.
